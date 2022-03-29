@@ -22,15 +22,16 @@
 }
 ```
 
-
 ## 组件库 说明文档
 
 项目根目录 **README.md** 文件
+
 ## 组件库 更新日志文档
 
 项目根目录 **CHANGELOG.md** 文件
 
-### 组件说明 （在script 标签中的第一个注释）
+### 组件说明 （在 script 标签中的第一个注释）
+
 ```JavaScript
 /**
  * 组件名称
@@ -39,6 +40,7 @@
  * @navOrder 1 // 组件排序
  */
 ```
+
 ### props 描述
 
 ```javascript
@@ -77,21 +79,20 @@ props: {
 }
 ```
 
-
 ### emits
 
 数组写法
 
-``` javascript
+```javascript
 emits: [
   // 更新 value
-  'update:value'
-]
+  "update:value",
+];
 ```
 
 对象写法
 
-``` javascript
+```javascript
 emits: {
   // 没有验证函数
   click: null,
@@ -117,7 +118,6 @@ emits: {
 
 ### 插槽注释
 
-
 ```html
 <!-- 测试插槽一 -->
 <slot></slot>
@@ -127,12 +127,11 @@ emits: {
 
 在组件目录下增加 **README.md** 文件，此文件将被解析并添加到当前组件文档的末尾
 
-
 ## TODO
 
 ### Props
 
-* default 为函数时
+- default 为函数时生成备注
 
 ### Event
 
