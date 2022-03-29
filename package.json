@@ -11,7 +11,7 @@
   ],
   "scripts": {
     "dev": "yarn awtch:tsup & yarn watch:template",
-    "build": "rm -rf dist && yarn tsup --minify && yarn test && yarn cp:template",
+    "build": "rm -rf dist && yarn tsup --minify && yarn cp:template",
     "create:vue": "node scripts/md.js",
     "tsup": "tsup src/index.ts --dts --format cjs,esm",
     "awtch:tsup": "tsup src/index.ts --watch --dts --format cjs,esm",
