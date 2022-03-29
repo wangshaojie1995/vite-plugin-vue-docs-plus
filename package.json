@@ -1,0 +1,84 @@
+{
+  "name": "vite-plugin-vue-docs-plus",
+  "version": "0.0.1",
+  "description": "vite plugin auto document generation for vue",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "client.d.ts"
+  ],
+  "scripts": {
+    "dev": "yarn awtch:tsup & yarn watch:template",
+    "build": "rm -rf dist && yarn tsup --minify && yarn test && yarn cp:template",
+    "create:vue": "node scripts/md.js",
+    "tsup": "tsup src/index.ts --dts --format cjs,esm",
+    "awtch:tsup": "tsup src/index.ts --watch --dts --format cjs,esm",
+    "watch:template": "nodemon --watch ./src/template -e vue,css --exec 'yarn cp:template'",
+    "cp:template": "copyfiles -f src/template/* dist/template",
+    "test:dev": "jest --watch",
+    "test": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wangshaojie1995/vite-plugin-vue-docs-plus.git"
+  },
+  "keywords": [
+    "vue",
+    "vite",
+    "vite-plugin"
+  ],
+  "author": "wsj <1130287243@qq.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wangshaojie1995/vite-plugin-vue-docs-plus/issues"
+  },
+  "homepage": "https://github.com/wangshaojie1995/vite-plugin-vue-docs-plus#readme",
+  "devDependencies": {
+    "@babel/core": "^7.14.6",
+    "@babel/preset-env": "^7.14.7",
+    "@babel/preset-typescript": "^7.14.5",
+    "@types/babel__traverse": "^7.14.0",
+    "@types/cheerio": "^0.22.30",
+    "@types/debug": "^4.1.6",
+    "@types/fs-extra": "^9.0.12",
+    "@types/humps": "^2.0.0",
+    "@types/jest": "^26.0.23",
+    "@types/node": "^15.12.5",
+    "babel-jest": "^27.0.6",
+    "copyfiles": "^2.4.1",
+    "debug": "^4.3.2",
+    "jest": "^27.0.6",
+    "nodemon": "^2.0.9",
+    "ts-node": "^10.2.1",
+    "tsup": "^4.12.0",
+    "typescript": "^4.3.4",
+    "vite": "^2.6.4",
+    "vue": "^3.2.31"
+  },
+  "peerDependencies": {
+    "vite": "^2.6.4",
+    "vue-router": "^4.0.0"
+  },
+  "dependencies": {
+    "@babel/traverse": "^7.14.7",
+    "@babel/types": "^7.14.5",
+    "@vue/compiler-sfc": "^3.1.2",
+    "cheerio": "^1.0.0-rc.10",
+    "comment-parser": "^1.1.5",
+    "fast-glob": "^3.2.7",
+    "fs-extra": "^10.0.0",
+    "humps": "^2.0.1",
+    "vue-router": "4",
+    "markdown-it": "^12.1.0",
+    "highlight.js": "^10.3.2",
+    "ant-design-vue": "3.1.0-rc.2",
+    "vue3-highlightjs": "^1.0.5"
+  },
+  "jest": {
+    "coverageReporters": [
+      "json-summary"
+    ]
+  }
+}
