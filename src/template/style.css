@@ -609,3 +609,15 @@
 .van-doc .van-doc-intro p {
   margin-bottom: 20px;
 }
+
+
+
+.display-flex {
+  display:flex
+}
+.align-center {
+  align-items: center;
+}
+.justify-space-between {
+  justify-content: space-between;
+}

@@ -61,6 +61,7 @@ function childFile(config: Config, route: Route): string {
   }
   const demos = [];
   if (route.demos) {
+    // TODO: demo 设置ID 以便通过hash快速找到
     for (const key in route.demos) {
       if (Object.prototype.hasOwnProperty.call(route.demos, key)) {
         const demo = route.demos[key];
@@ -69,17 +70,19 @@ function childFile(config: Config, route: Route): string {
           .replace(/>/g, "&gt;")
           .replace(/{/g, "&#123;")
           .replace(/}/g, "&#125");
-        demos.push(`<div class="card">
-        <h3>${demo.title || 'Demo'}</h3>
-        <p class="demo-desc" v-if="${demo.desc ? 'true' : 'false'}">${demo.desc}</p>
-        <${demo.name} />
-        <pre v-highlightjs v-show="sourceCodeVisible['${demo.name}']"><code class="language-js">${demoCode}</code></pre>
-        <div class="source-code">
-          <p style="text-align: center">
-              <span style="cursor: pointer" @click="toggleSourceCodeVisible('${demo.name}')">
-                  {{sourceCodeVisible['${demo.name}'] ? '收起' : '展开'}}代码
-              </span>
-          </p>
+        demos.push(`<div class="doc-plus-demo-item">
+        <section class="desc-plus-demo-view"><${demo.name} /></section>
+        <div class="doc-plus-demo-meta">
+          <div class="doc-plus-demo-title">${demo.title || 'Demo'}</div>
+          <div class="doc-plus-demo--desc" v-if="${demo.desc ? 'true' : 'false'}">${demo.desc}</div>
+          <div class="doc-plus-demo-source-code">
+            <span style="cursor: pointer" @click="toggleSourceCodeVisible('${demo.name}')">
+                {{sourceCodeVisible['${demo.name}'] ? '收起' : '展开'}}代码
+            </span>
+          </div>
+        </div>
+        <div class="doc-plus-demo-code">
+          <pre v-highlightjs v-show="sourceCodeVisible['${demo.name}']"><code class="language-js">${demoCode}</code></pre>
         </div>
      </div>`);
       }
@@ -94,20 +97,21 @@ function childFile(config: Config, route: Route): string {
       .replace(/}/g, "&#125");
     cacheData = cacheData.replace(
       `<!-- @vite-plugin-vue-docs-plus content template demo -->`,
-      `<div class="card">
-          <h3>Demo</h3>
-          <${demo.name} />
-          <pre v-highlightjs v-show="sourceCodeVisible['${
-            demo.name
-          }']"><code class="language-js">${demoCode}</code></pre>
-          <div class="source-code">
-            <p style="text-align: center">
-                <span style="cursor: pointer" @click="toggleSourceCodeVisible('${
-                  demo.name
-                }')">
-                    {{sourceCodeVisible['${demo.name}'] ? '收起' : '展开'}}代码
-                </span>
-            </p>
+      `<div class="doc-plus-demo-item">
+          <section class="desc-plus-demo-view"><${demo.name} /></section>
+          <div class="doc-plus-demo-meta">
+            <div class="doc-plus-demo-title">${demo.title || 'Demo'}</div>
+            <div class="doc-plus-demo--desc" v-if="${demo.desc ? 'true' : 'false'}">${demo.desc}</div>
+            <div class="doc-plus-demo-source-code">
+              <span style="cursor: pointer" @click="toggleSourceCodeVisible('${demo.name}')">
+                  {{sourceCodeVisible['${demo.name}'] ? '收起' : '展开'}}代码
+              </span>
+            </div>
+          </div>
+          <div class="doc-plus-demo-code">
+            <pre v-highlightjs v-show="sourceCodeVisible['${
+              demo.name
+            }']"><code class="language-js">${demoCode}</code></pre>
           </div>
        </div>${demos.join("")}`
     );

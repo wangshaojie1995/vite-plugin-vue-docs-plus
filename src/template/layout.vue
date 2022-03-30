@@ -1,10 +1,9 @@
 <template>
-  <div class="van-doc">
-    <!-- <Button>fdfd</Button> -->
+  <div class="doc-plus-layout">
     <HeaderComponent :header="header"/>
     <NavComponent :navs="navs"/>
-    <div class="van-doc-container van-doc-row">
-      <div class="van-doc-content van-doc-content--common">
+    <div class="doc-plus-content-container">
+      <div class="doc-plus-content">
         <router-view></router-view>
       </div>
     </div>
@@ -15,10 +14,7 @@
 import NavComponent from "vite-plugin-vue-docs-plus/dist/template/nav.vue";
 import HeaderComponent from "vite-plugin-vue-docs-plus/dist/template/header.vue";
 import "vite-plugin-vue-docs-plus/dist/template/style.css";
-import 'highlight.js/styles/darcula.css'
-import 'ant-design-vue/dist/antd.css';
-// import {Button} from 'ant-design-vue' 
-// TODO: antdv 无法使用
+import 'highlight.js/styles/idea.css'
 
 export default {
   components: { HeaderComponent, NavComponent },
@@ -30,3 +26,29 @@ export default {
   },
 };
 </script>
+<style scoped>
+.doc-plus-layout {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background-color: #fff;
+  color: #323233;
+  text-align: left;
+  font-size: 16px;
+  font-family: Open Sans, -apple-system, BlinkMacSystemFont, Helvetica Neue,
+    Helvetica, Segoe UI, Arial, Roboto, PingFang SC, miui, Hiragino Sans GB,
+    Microsoft Yahei, sans-serif;
+  min-height: 100%;
+  width: 100%
+}
+.doc-plus-content-container {
+  box-sizing: border-box;
+  padding-left: 280px;
+  margin-top: 64px;
+}
+.doc-plus-content {
+  padding: 24px;
+  padding-left: 64px;
+}
+</style>
