@@ -1,5 +1,9 @@
 # vite-plugin-vue-docs-plus
 
+> [示例](http://vuedocs.wangshaojie.cn)
+
+> 项目参考：vite-plugin-vue-docs
+
 ## 插件配置
 
 ```javascript
@@ -131,7 +135,7 @@ emits: {
 
 ### Props
 
-- default 为函数时生成备注
+- default 为函数时
 
 ### Event
 

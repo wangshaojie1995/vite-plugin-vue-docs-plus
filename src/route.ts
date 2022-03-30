@@ -5,9 +5,8 @@ import { ViteDevServer } from "vite";
 import * as fs from "fs";
 import Cache from "./cache";
 import path from "path";
+import hljs from 'highlight.js'
 import { string } from "fast-glob/out/utils";
-
-const hljs = require("highlight.js");
 const md = require("markdown-it")({
   html: true,
   highlight: function (str: string, lang: string) {
